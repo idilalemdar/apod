@@ -14,20 +14,18 @@ response = http.request('GET', url)
 print("Information retrieved...")
 
 response = json.loads(response.data.decode('utf-8'))
-notification = []
 
-# TODO: Check whether the image has already downloaded
 if response['media_type'] == 'image':
     imgurl = response['hdurl']
     imgname = imgurl.strip().split('/')[-1]
-    urllib.request.urlretrieve(imgurl, directory + imgname)
+    saveAs = directory + response['date'] + '_' + imgname
+    urllib.request.urlretrieve(imgurl, saveAs)
     print("Image retrieved...")
 
     # TODO: search for a possibly better way to do this (fit in the windows options etc)
-    os.system('gsettings set org.gnome.desktop.background picture-uri file://' + directory + imgname)
+    os.system('gsettings set org.gnome.desktop.background picture-uri file://' + saveAs)
     notification = ['notify-send', response['explanation']]
     sp.run(notification)
 
 else:
-    notification = []
     os.system('notify-send \'No new picture for today :( \'')
