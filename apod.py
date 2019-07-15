@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
-import urllib3
-import urllib.request
-import json
+from urllib3 import PoolManager, exceptions
+from urllib.request import urlretrieve
+from json import loads
 from subprocess import Popen
 
-directory = '/home/cydonia/Pictures/apod/'
-url = 'https://api.nasa.gov/planetary/apod?api_key=zaVObY9zGhMh20jhIaTwqUkrgdAeftR8MltzY5ye'
+# Set the directory you want to save the pictures in
+DIRECTORY = '/home/cydonia/Pictures/apod/'
+URL = 'https://api.nasa.gov/planetary/apod?api_key=zaVObY9zGhMh20jhIaTwqUkrgdAeftR8MltzY5ye'
 
 
 class InvalidMediaType(Exception):
@@ -16,7 +17,7 @@ class InvalidMediaType(Exception):
 
 def notify(message):
     # TODO: Not the notification type I wanted. Do research
-    p = Popen(['notify-send', message])
+    p = Popen(['notify-send', ' ', message])
     p.wait()
 
 
@@ -28,18 +29,22 @@ def setWallpaper(saveAs):
 
 
 def getInfo(url):
-    http = urllib3.PoolManager()
-    response = http.request('GET', url)
-    print("Information retrieved...")
-    return json.loads(response.data.decode('utf-8'))
+    try:
+        http = PoolManager()
+        response = http.request('GET', url)
+        print("Information retrieved...")
+        return loads(response.data.decode('utf-8'))
+    except exceptions.MaxRetryError:
+        notify('No Internet connectivity found.')
+        exit(0)
 
 
 def downloadImage(response):
     if response['media_type'] == 'image':
         imgUrl = response['hdurl']
         imgName = imgUrl.strip().split('/')[-1]
-        saveAs = directory + response['date'] + '_' + imgName
-        urllib.request.urlretrieve(imgUrl, saveAs)
+        saveAs = DIRECTORY + response['date'] + '_' + imgName
+        urlretrieve(imgUrl, saveAs)
         print("Image retrieved...")
         return saveAs, response['explanation']
     else:
@@ -47,7 +52,7 @@ def downloadImage(response):
 
 
 def run():
-    response = getInfo(url)
+    response = getInfo(URL)
     try:
         saveAs, explanation = downloadImage(response)
         setWallpaper(saveAs)
@@ -58,3 +63,4 @@ def run():
 
 if __name__ == '__main__':
     run()
+
