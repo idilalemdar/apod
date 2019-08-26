@@ -4,4 +4,5 @@ This small script downloads and sets the NASA's Astronomy Picture of the Day ([A
 Currently works on Ubuntu 18.04 LTE. Some improvements needed to be done:
 
 1.Explanation of the picture should be sent as a pinned notification.
+
 2.Script should be scheduled to run automatically at every boot of the system.
