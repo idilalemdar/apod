@@ -10,11 +10,6 @@ DIRECTORY = '/home/cydonia/Pictures/apod/'
 URL = 'https://api.nasa.gov/planetary/apod?api_key=zaVObY9zGhMh20jhIaTwqUkrgdAeftR8MltzY5ye'
 
 
-class InvalidMediaType(Exception):
-    """Raised when the media type of that day is not image"""
-    pass
-
-
 def notify(message):
     # TODO: Not the notification type I wanted. Do research
     p = Popen(['notify-send', ' ', message])
@@ -40,15 +35,13 @@ def getInfo(url):
 
 
 def downloadImage(response):
-    if response['media_type'] == 'image':
-        imgUrl = response['hdurl']
-        imgName = imgUrl.strip().split('/')[-1]
-        saveAs = DIRECTORY + response['date'] + '_' + imgName
-        urlretrieve(imgUrl, saveAs)
-        print("Image retrieved...")
-        return saveAs, response['explanation']
-    else:
-        raise InvalidMediaType
+    assert response['media_type'] == 'image'
+    imgUrl = response['hdurl']
+    imgName = imgUrl.strip().split('/')[-1]
+    saveAs = DIRECTORY + response['date'] + '_' + imgName
+    urlretrieve(imgUrl, saveAs)
+    print("Image retrieved...")
+    return saveAs, response['explanation']
 
 
 def run():
@@ -57,8 +50,9 @@ def run():
         saveAs, explanation = downloadImage(response)
         setWallpaper(saveAs)
         notify(explanation)
-    except InvalidMediaType:
+    except AssertionError:
         notify('Media type not supported.')
+        exit(0)
 
 
 if __name__ == '__main__':
