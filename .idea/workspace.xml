@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ed121d6-13bd-48b7-a96f-5293521b1672" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apod.py" beforeDir="false" afterPath="$PROJECT_DIR$/apod.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,11 +35,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>directory</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -50,23 +42,16 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/apod.py" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ceng562/Project/drl-5g" />
   </component>
   <component name="RunManager" selected="Python.apod">
     <configuration name="apod" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -114,9 +99,21 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.loopcheck" />
       <item itemvalue="Python.apod" />
+      <item itemvalue="Python.loopcheck" />
     </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -138,7 +135,11 @@
       <workItem from="1566330192621" duration="804000" />
       <workItem from="1566331692918" duration="2800000" />
       <workItem from="1570917168608" duration="742000" />
-      <workItem from="1575712734717" duration="252000" />
+      <workItem from="1575712734717" duration="983000" />
+      <workItem from="1575719040223" duration="175000" />
+      <workItem from="1576765990692" duration="29000" />
+      <workItem from="1577649565896" duration="611000" />
+      <workItem from="1580305639382" duration="234000" />
     </task>
     <servers />
   </component>
@@ -158,8 +159,34 @@
       </map>
     </option>
   </component>
+  <component name="WindowStateProjectService">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576766014417">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1576766014417" />
+    <state width="1253" height="138" key="GridCell.Tab.0.bottom" timestamp="1580306065382">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="138" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1580306065382" />
+    <state width="1253" height="138" key="GridCell.Tab.0.center" timestamp="1580306065382">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="138" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1580306065382" />
+    <state width="1253" height="138" key="GridCell.Tab.0.left" timestamp="1580306065381">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="138" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1580306065381" />
+    <state width="1253" height="138" key="GridCell.Tab.0.right" timestamp="1580306065382">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="138" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1580306065382" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1580305640174">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1580305640174" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/apod$apod.coverage" NAME="apod Coverage Results" MODIFIED="1566333837923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/apod$loopcheck.coverage" NAME="loopcheck Coverage Results" MODIFIED="1566333371836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/apod$apod.coverage" NAME="apod Coverage Results" MODIFIED="1580306065362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

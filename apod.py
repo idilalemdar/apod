@@ -30,7 +30,7 @@ def getInfo(url):
         print("Information retrieved...")
         return loads(response.data.decode('utf-8'))
     except exceptions.MaxRetryError:
-        notify('No Internet connectivity found.')
+        notify('APOD: No Internet connectivity found.')
         exit(0)
 
 
@@ -51,10 +51,12 @@ def run():
         setWallpaper(saveAs)
         notify(explanation)
     except AssertionError:
-        notify('Media type not supported.')
-        exit(0)
+        notify('APOD: Media type not supported.')
+    except KeyError:
+        notify('APOD: Service not available.')
 
 
 if __name__ == '__main__':
     run()
+    exit(0)
 
