@@ -4,9 +4,11 @@ from urllib3 import PoolManager, exceptions
 from urllib.request import urlretrieve
 from json import loads
 from subprocess import Popen
+from os.path import expanduser # Imported for getting user directory platform independent.
 
 # Set the directory you want to save the pictures in
-DIRECTORY = '/home/cydonia/Pictures/apod/'
+# DIRECTORY = '/home/cydonia/Pictures/apod/'
+DIRECTORY = expanduser("~") + ".apod"
 URL = 'https://api.nasa.gov/planetary/apod?api_key=zaVObY9zGhMh20jhIaTwqUkrgdAeftR8MltzY5ye'
 
 
@@ -54,6 +56,8 @@ def run():
         notify('APOD: Media type not supported.')
     except KeyError:
         notify('APOD: Service not available.')
+    except FileNotFoundError:
+        print('File doesn\'t exist.')
 
 
 if __name__ == '__main__':
