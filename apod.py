@@ -58,6 +58,8 @@ def run():
         notify('APOD: Service not available.')
     except FileNotFoundError:
         print('File doesn\'t exist.')
+    except PermissionError:
+        print('Please run as root.')
 
 
 if __name__ == '__main__':
