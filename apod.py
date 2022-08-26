@@ -8,7 +8,7 @@ from os.path import expanduser # Imported for getting user directory platform in
 
 # Set the directory you want to save the pictures in
 # DIRECTORY = '/home/cydonia/Pictures/apod/'
-DIRECTORY = expanduser("~") + ".apod"
+DIRECTORY = expanduser("~") + "/.apod/"
 URL = 'https://api.nasa.gov/planetary/apod?api_key=zaVObY9zGhMh20jhIaTwqUkrgdAeftR8MltzY5ye'
 
 
@@ -19,7 +19,7 @@ def notify(message):
 
 
 def setWallpaper(saveAs):
-    args = ['gsettings', 'set', 'org.gnome.desktop.background', 'picture-uri', 'file://' + saveAs]
+    args = ['gsettings', 'set', 'org.gnome.desktop.background', 'picture-uri', 'file://' + saveAs] # What if users' DE is KDE Plasma?
     q = Popen(args)
     q.wait()
     print('Wallpaper set.')
@@ -39,6 +39,7 @@ def getInfo(url):
 def downloadImage(response):
     assert response['media_type'] == 'image'
     imgUrl = response['hdurl']
+    print(imgUrl)
     imgName = imgUrl.strip().split('/')[-1]
     saveAs = DIRECTORY + response['date'] + '_' + imgName
     urlretrieve(imgUrl, saveAs)
