@@ -1,12 +1,20 @@
 #!/usr/bin/env python3
 
+from ast import arg
 from urllib3 import PoolManager, exceptions
 from urllib.request import urlretrieve
 from json import loads
 from subprocess import Popen
+from subprocess import run
+from os.path import expanduser # Imported for getting user directory platform independent.
+from os import popen, system
 
 # Set the directory you want to save the pictures in
-DIRECTORY = '/home/cydonia/Pictures/apod/'
+DIRECTORY = expanduser("~")
+args = "mkdir -p " + DIRECTORY + "/apod/"
+system(args)
+DIRECTORY = expanduser("~") + "/apod/"
+
 URL = 'https://api.nasa.gov/planetary/apod?api_key=zaVObY9zGhMh20jhIaTwqUkrgdAeftR8MltzY5ye'
 
 
@@ -17,10 +25,13 @@ def notify(message):
 
 
 def setWallpaper(saveAs):
-    args = ['gsettings', 'set', 'org.gnome.desktop.background', 'picture-uri', 'file://' + saveAs]
-    q = Popen(args)
-    q.wait()
-    print('Wallpaper set.')
+    try:
+        args = ['gsettings', 'set', 'org.gnome.desktop.background', 'picture-uri', 'file://' + saveAs] # What if users' DE is KDE Plasma?
+        q = Popen(args)
+        q.wait()
+        print('Wallpaper set.')
+    except:
+        print('An error occured')
 
 
 def getInfo(url):
@@ -37,6 +48,7 @@ def getInfo(url):
 def downloadImage(response):
     assert response['media_type'] == 'image'
     imgUrl = response['hdurl']
+    print(imgUrl)
     imgName = imgUrl.strip().split('/')[-1]
     saveAs = DIRECTORY + response['date'] + '_' + imgName
     urlretrieve(imgUrl, saveAs)
@@ -54,6 +66,10 @@ def run():
         notify('APOD: Media type not supported.')
     except KeyError:
         notify('APOD: Service not available.')
+    except FileNotFoundError:
+        print('File doesn\'t exist.')
+    except PermissionError:
+        print('Please run as root.')
 
 
 if __name__ == '__main__':
